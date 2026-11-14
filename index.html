@@ -1,221 +1,33 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#090a0d"><meta name="description" content="MSD — The Legend. An immersive fan-made MS Dhoni experience.">
-<title>MSD — THE LEGEND</title>
-<style>
-:root{--bg:#08090c;--panel:#111319;--panel2:#171a22;--text:#f5f5f2;--muted:#9b9da6;--line:#ffffff18;--accent:#e5c51b;--accent2:#3158a5;--glow:#e5c51b55;--radius:22px;color-scheme:dark}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,color-mix(in srgb,var(--accent) 12%,transparent),transparent 38%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;overflow-x:hidden}button,a{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}::selection{background:var(--accent);color:#111}
-#particles{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.48}
-.noise{position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
-.topbar{position:fixed;z-index:30;top:12px;left:50%;transform:translateX(-50%);width:min(1180px,calc(100% - 24px));display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border:1px solid var(--line);border-radius:18px;background:#0c0e13c9;backdrop-filter:blur(22px);box-shadow:0 12px 40px #0005}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.12em;font-size:13px}.brandmark{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(145deg,var(--accent),#8c6b0b);color:#111;font-weight:1000;box-shadow:0 0 25px var(--glow)}
-.top-actions{display:flex;gap:8px;align-items:center}.iconbtn,.menu-btn{border:1px solid var(--line);background:#ffffff09;color:var(--text);border-radius:12px;padding:9px 12px}.iconbtn:hover,.menu-btn:hover{border-color:var(--accent);transform:translateY(-2px)}
-.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:22px;width:min(1420px,100%);margin:auto;padding:92px 22px 40px}
-.sidebar{position:sticky;top:90px;height:calc(100dvh - 110px);overflow:auto;border:1px solid var(--line);background:#101218b8;backdrop-filter:blur(18px);border-radius:22px;padding:14px;align-self:start}
-.nav-label{font-size:10px;letter-spacing:.2em;color:var(--muted);padding:12px 10px 8px}.nav{display:grid;gap:5px}.nav button{display:flex;align-items:center;gap:12px;text-align:left;border:1px solid transparent;background:transparent;color:#b9bbc3;padding:11px 12px;border-radius:13px;font-size:13px;transition:.25s}.nav button .num{font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums}.nav button:hover{background:#ffffff0a;color:white}.nav button.active{background:color-mix(in srgb,var(--accent) 14%,transparent);border-color:color-mix(in srgb,var(--accent) 42%,transparent);color:var(--text)}.nav button.active .num{color:var(--accent)}
-.sidebar-bottom{margin-top:20px;padding:13px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,#ffffff0a,transparent)}.sidebar-bottom b{font-size:12px}.sidebar-bottom p{font-size:11px;color:var(--muted);line-height:1.5;margin:7px 0 0}
-main{min-width:0}.page{display:none;animation:pageIn .55s cubic-bezier(.2,.8,.2,1)}.page.active{display:block}@keyframes pageIn{from{opacity:0;transform:translateY(15px) scale(.99)}to{opacity:1;transform:none}}
-.kicker{font-size:10px;letter-spacing:.24em;color:var(--accent);font-weight:800;text-transform:uppercase}.heading{font-size:clamp(30px,5vw,56px);letter-spacing:-.055em;line-height:.98;margin:12px 0 14px}.sub{color:var(--muted);max-width:680px;line-height:1.7;font-size:14px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:20px 0 24px}.section-head .heading{font-size:clamp(28px,4vw,42px)}
-.hero{min-height:610px;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:30px;background:radial-gradient(ellipse at 70% 45%,var(--glow),transparent 40%),linear-gradient(125deg,#171a21,#090a0e 62%);padding:clamp(25px,5vw,62px);display:flex;align-items:center}
-.hero:after{content:"";position:absolute;inset:auto -10% -42% 30%;height:70%;background:radial-gradient(ellipse,var(--glow),transparent 68%);filter:blur(35px);pointer-events:none}
-.hero-copy{position:relative;z-index:2;max-width:590px}.hero h1{font-size:clamp(60px,11vw,142px);letter-spacing:-.09em;line-height:.78;margin:22px 0 25px;font-weight:1000;text-shadow:0 12px 45px #0008}.hero h1 span{display:block;color:var(--accent);font-size:.43em;letter-spacing:.04em;margin-top:20px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:27px}.primary,.secondary{border-radius:13px;padding:13px 17px;font-weight:800;font-size:12px;letter-spacing:.04em;border:1px solid var(--line);transition:.25s}.primary{background:var(--accent);color:#101114;border-color:transparent}.secondary{background:#ffffff0a;color:var(--text)}.primary:hover,.secondary:hover{transform:translateY(-3px);box-shadow:0 12px 30px var(--glow)}
-.orb-scene{position:absolute;right:4%;top:50%;transform:translateY(-50%);width:min(43%,430px);aspect-ratio:1;perspective:900px;z-index:1}.orb{position:absolute;inset:12%;border-radius:50%;transform-style:preserve-3d;animation:float 7s ease-in-out infinite}.orb:before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff8,transparent 12%),radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--accent) 90%,white),color-mix(in srgb,var(--accent) 50%,#171717) 35%,#090a0c 72%);box-shadow:inset -28px -28px 55px #000b,inset 12px 12px 30px #fff3,0 0 65px var(--glow);transform:rotateY(-25deg) rotateX(18deg)}.orb:after{content:"";position:absolute;inset:-14%;border:1px solid color-mix(in srgb,var(--accent) 65%,transparent);border-radius:50%;transform:rotateX(70deg) rotateZ(-25deg);box-shadow:0 0 25px var(--glow)}.orbit{position:absolute;inset:0;border:1px solid #ffffff25;border-radius:50%;transform:rotateX(70deg) rotateZ(20deg);animation:spin 18s linear infinite}.orbit.two{transform:rotateY(70deg) rotateZ(-25deg);animation-duration:24s;border-color:color-mix(in srgb,var(--accent) 45%,transparent)}.orb-label{position:absolute;right:0;bottom:5%;font-size:10px;letter-spacing:.2em;color:var(--muted)}
-@keyframes float{50%{transform:translateY(-17px) rotateY(9deg)}}@keyframes spin{to{transform:rotateX(70deg) rotateZ(380deg)}}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}.stat,.card{border:1px solid var(--line);background:linear-gradient(145deg,#ffffff0b,#ffffff03);border-radius:20px;padding:19px;backdrop-filter:blur(12px)}.stat strong{display:block;font-size:clamp(22px,3vw,32px);letter-spacing:-.05em}.stat span{font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
-.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.card{transition:transform .3s,border-color .3s,box-shadow .3s;transform-style:preserve-3d;min-width:0}.card:hover{transform:translateY(-5px) rotateX(1deg);border-color:color-mix(in srgb,var(--accent) 50%,var(--line));box-shadow:0 18px 40px #0005,0 0 25px var(--glow)}.card h3{margin:8px 0;font-size:17px}.card p{font-size:12px;color:var(--muted);line-height:1.65}.card .tag{font-size:9px;color:var(--accent);letter-spacing:.18em;text-transform:uppercase}.big-num{font-size:42px;font-weight:900;letter-spacing:-.07em;color:var(--accent)}
-.timeline{border-left:1px solid color-mix(in srgb,var(--accent) 55%,transparent);margin:20px 0 0 10px;padding-left:23px;display:grid;gap:18px}.moment{position:relative;padding:17px;border:1px solid var(--line);border-radius:16px;background:#ffffff08}.moment:before{content:"";position:absolute;left:-30px;top:22px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--glow)}.moment small{color:var(--accent);letter-spacing:.16em;font-weight:800}.moment h3{margin:7px 0}.moment p{color:var(--muted);font-size:12px;line-height:1.6;margin:0}
-.theme-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.theme-card{border:1px solid var(--line);border-radius:22px;padding:19px;min-height:190px;position:relative;overflow:hidden;text-align:left;color:white;background:#141820;transition:.3s}.theme-card:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-50px;bottom:-75px;background:var(--swatch);filter:blur(3px);opacity:.8;box-shadow:0 0 65px var(--swatch)}.theme-card>*{position:relative;z-index:1}.theme-card:hover{transform:translateY(-5px) scale(1.01)}.theme-card.selected{outline:2px solid var(--swatch);outline-offset:2px}.theme-card b{display:block;font-size:24px;margin:16px 0 5px}.theme-card small{color:#ffffffa8}.theme-card .theme-icon{font-size:24px}
-.trophy{height:190px;display:grid;place-items:center;perspective:600px}.cup{width:100px;height:120px;position:relative;transform-style:preserve-3d;animation:cupfloat 5s ease-in-out infinite;filter:drop-shadow(0 18px 18px #0008)}.cup .bowl{position:absolute;top:0;left:15px;width:70px;height:66px;background:linear-gradient(100deg,#80601c,#ffe88a 28%,#b27b17 60%,#fff0a8);border-radius:12px 12px 35px 35px;box-shadow:inset 0 0 12px #fff9}.cup .handle{position:absolute;top:12px;width:35px;height:40px;border:8px solid #d5a73e;border-radius:50%}.cup .handle.left{left:-7px}.cup .handle.right{right:-7px}.cup .stem{position:absolute;top:62px;left:43px;width:14px;height:35px;background:linear-gradient(90deg,#8e641c,#ffe58a,#9b701f)}.cup .base{position:absolute;bottom:0;left:26px;width:48px;height:18px;background:linear-gradient(90deg,#755016,#ffe28a,#8e641c);border-radius:4px}
-.profile{display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:center}.sg-logo{width:160px;aspect-ratio:1;border-radius:35px;display:grid;place-items:center;font-size:52px;font-weight:1000;letter-spacing:-.1em;color:#151515;background:linear-gradient(145deg,#fff0a6,#d3a53c 45%,#795314);box-shadow:inset 0 3px 10px #fff9,0 18px 50px #0008,0 0 45px var(--glow);transform:rotateY(-14deg) rotateX(8deg);animation:float 6s ease-in-out infinite}
-.pill{display:inline-flex;padding:7px 10px;border:1px solid var(--line);border-radius:999px;font-size:10px;color:var(--muted);margin:4px 4px 0 0}
-.progress{height:6px;background:#ffffff13;border-radius:10px;overflow:hidden;margin-top:9px}.progress i{display:block;height:100%;background:var(--accent);width:var(--w);border-radius:10px}
-.controls{display:flex;flex-wrap:wrap;gap:8px}.field{width:100%;padding:12px;border-radius:12px;background:#ffffff08;border:1px solid var(--line);color:var(--text);outline:none}.field:focus{border-color:var(--accent)}.notice{padding:13px 15px;border-radius:14px;background:color-mix(in srgb,var(--accent) 10%,transparent);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);font-size:11px;color:var(--muted);line-height:1.6}
-.footer{margin-top:25px;padding:20px 5px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:10px;letter-spacing:.1em}
-.mobile-nav{display:none}.toast{position:fixed;z-index:50;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#f3f0e5;color:#141414;padding:11px 16px;border-radius:12px;font-size:12px;font-weight:800;transition:.3s}.toast.show{opacity:1;transform:translate(-50%,0)}
-.modal{position:fixed;inset:0;z-index:60;background:#000b;display:none;place-items:center;padding:20px}.modal.show{display:grid}.modal-box{width:min(470px,100%);padding:24px;border:1px solid var(--line);border-radius:22px;background:#12151c;box-shadow:0 25px 80px #000}.modal-box h3{margin-top:0}.modal-box p{font-size:13px;line-height:1.6;color:var(--muted)}
-@media(max-width:900px){.layout{grid-template-columns:1fr;padding:84px 14px 95px}.sidebar{display:none}.mobile-nav{display:flex;position:fixed;z-index:35;bottom:10px;left:10px;right:10px;overflow:auto;gap:5px;padding:8px;border:1px solid var(--line);border-radius:18px;background:#0c0e13e8;backdrop-filter:blur(22px)}.mobile-nav button{flex:0 0 auto;border:0;background:transparent;color:var(--muted);padding:9px 11px;border-radius:12px;font-size:10px}.mobile-nav button.active{background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--text)}.hero{min-height:570px}.orb-scene{width:52%;right:-5%;top:27%;opacity:.72}.hero-copy{align-self:end}.stats{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.topbar{top:8px}.top-actions .label{display:none}.hero{min-height:600px;padding:25px 20px}.orb-scene{width:75%;right:-13%;top:23%;opacity:.48}.hero-copy{margin-top:190px}.hero h1{font-size:clamp(58px,17vw,90px)}.grid2,.grid3,.theme-grid{grid-template-columns:1fr}.profile{grid-template-columns:1fr}.sg-logo{width:125px}.section-head{display:block}.section-head .sub{margin-top:10px}.footer{padding-bottom:15px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
-</style>
-</head>
-<body>
-<canvas id="particles"></canvas><div class="noise"></div>
-<header class="topbar">
- <a class="brand" href="#" onclick="showPage('home');return false"><span class="brandmark">M</span><span>MSD <span style="color:var(--accent)">/</span> THE LEGEND</span></a>
- <div class="top-actions"><button class="iconbtn" id="soundBtn" aria-label="Toggle sound">♫ <span class="label">SOUND OFF</span></button><button class="iconbtn" onclick="toggleFullscreen()">⛶ <span class="label">FULLSCREEN</span></button></div>
-</header>
-<div class="layout">
-<aside class="sidebar">
- <div class="nav-label">THE EXPERIENCE</div><nav class="nav" id="sideNav"></nav>
- <div class="sidebar-bottom"><b>LEGEND MODE</b><p>Choose a cricket era in Theme Universe. Its colours flow through the entire experience.</p></div>
-</aside>
-<main>
-<section class="page active" id="home">
- <div class="hero">
-  <div class="hero-copy"><div class="kicker">A tribute to an era • India • 2004—2020</div><h1>MS<br>DHONI<span>THE LEGEND</span></h1><p class="sub">Calm under pressure. Fearless in the final over. A fan-made digital universe celebrating the journey, leadership and legacy of Mahendra Singh Dhoni.</p><div class="hero-actions"><button class="primary" onclick="showPage('career')">EXPLORE THE JOURNEY ↗</button><button class="secondary" onclick="showPage('themes')">CHANGE YOUR ERA ◈</button></div></div>
-  <div class="orb-scene" aria-hidden="true"><div class="orbit"></div><div class="orbit two"></div><div class="orb"></div><div class="orb-label">THE FINISHER • THE CAPTAIN</div></div>
- </div>
- <div class="stats"><div class="stat"><strong>2007</strong><span>T20 World Cup</span></div><div class="stat"><strong>2011</strong><span>ODI World Cup</span></div><div class="stat"><strong>2013</strong><span>Champions Trophy</span></div><div class="stat"><strong>5×</strong><span>IPL Champion Captain</span></div></div>
- <div class="section-head"><div><div class="kicker">Explore the universe</div><h2 class="heading">A legacy in every chapter.</h2></div></div>
- <div class="grid3">
-  <article class="card" onclick="showPage('trophies')"><span class="tag">01 / THE COLLECTION</span><h3>Trophy Room</h3><p>Step into a showcase of iconic championship moments.</p></article>
-  <article class="card" onclick="showPage('moments')"><span class="tag">02 / THE MEMORIES</span><h3>Legendary Moments</h3><p>Revisit the defining chapters of an extraordinary career.</p></article>
-  <article class="card" onclick="showPage('studio')"><span class="tag">03 / THE CREATOR</span><h3>Developer Studio</h3><p>Meet the creator behind this fan-made experience.</p></article>
- </div>
-</section>
-
-<section class="page" id="career">
- <div class="section-head"><div><div class="kicker">Chapter one / The journey</div><h2 class="heading">From Ranchi to the world.</h2><p class="sub">A timeline of defining milestones. Explore the moments that shaped the legend.</p></div></div>
- <div class="timeline">
-  <div class="moment"><small>2004 · INTERNATIONAL DEBUT</small><h3>The journey begins</h3><p>Made his ODI debut for India against Bangladesh, beginning an international career that would redefine wicketkeeping and finishing.</p></div>
-  <div class="moment"><small>2007 · CAPTAINCY & WORLD TITLE</small><h3>A new leader emerges</h3><p>Led India to the inaugural ICC Men's T20 World Cup title in South Africa.</p></div>
-  <div class="moment"><small>2011 · THE WORLD CUP</small><h3>That unforgettable night</h3><p>India won the ICC Cricket World Cup. Dhoni's unbeaten 91 in the final became one of the defining innings in Indian cricket.</p></div>
-  <div class="moment"><small>2013 · CHAMPIONS TROPHY</small><h3>Completing the set</h3><p>Captained India to the ICC Champions Trophy, becoming the first captain to win all three major ICC limited-overs trophies.</p></div>
-  <div class="moment"><small>2016 · THE FINISHER</small><h3>Still delivering</h3><p>Continued to produce memorable finishes and wicketkeeping performances across formats.</p></div>
-  <div class="moment"><small>2020 · INTERNATIONAL FAREWELL</small><h3>An era, forever</h3><p>Announced his retirement from international cricket, leaving a legacy of leadership, composure and extraordinary moments.</p></div>
- </div>
-</section>
-
-<section class="page" id="stats">
- <div class="section-head"><div><div class="kicker">Chapter two / Numbers with a story</div><h2 class="heading">The numbers behind the legend.</h2><p class="sub">Selected career highlights. Figures are rounded or summarized; verify official scorecards for detailed statistical use.</p></div></div>
- <div class="grid3">
-  <div class="card"><div class="tag">ODI CAREER</div><div class="big-num">10,000+</div><p>International ODI runs</p></div>
-  <div class="card"><div class="tag">TEST CAREER</div><div class="big-num">4,800+</div><p>Test runs for India</p></div>
-  <div class="card"><div class="tag">T20I CAREER</div><div class="big-num">1,600+</div><p>T20 International runs</p></div>
-  <div class="card"><div class="tag">WICKETKEEPING</div><div class="big-num">800+</div><p>International dismissals</p></div>
-  <div class="card"><div class="tag">CAPTAINCY</div><div class="big-num">3</div><p>Major ICC limited-overs trophies</p></div>
-  <div class="card"><div class="tag">IPL</div><div class="big-num">5×</div><p>IPL titles as CSK captain</p></div>
- </div>
- <div class="notice" style="margin-top:14px">Statistics are intentionally presented as rounded highlights, not a live data feed. For exact figures, consult official ICC, BCCI and IPL records.</div>
-</section>
-
-<section class="page" id="trophies">
- <div class="section-head"><div><div class="kicker">Chapter three / The museum</div><h2 class="heading">A room full of history.</h2><p class="sub">A CSS 3D trophy gallery inspired by the major team achievements associated with Dhoni's captaincy.</p></div></div>
- <div class="grid3">
-  <article class="card"><div class="trophy"><div class="cup"><i class="bowl"></i><i class="handle left"></i><i class="handle right"></i><i class="stem"></i><i class="base"></i></div></div><span class="tag">2007 · SOUTH AFRICA</span><h3>ICC T20 World Cup</h3><p>India's inaugural T20 World Cup triumph.</p></article>
-  <article class="card"><div class="trophy"><div class="cup"><i class="bowl"></i><i class="handle left"></i><i class="handle right"></i><i class="stem"></i><i class="base"></i></div></div><span class="tag">2011 · INDIA</span><h3>ICC Cricket World Cup</h3><p>A home-soil World Cup victory remembered across generations.</p></article>
-  <article class="card"><div class="trophy"><div class="cup"><i class="bowl"></i><i class="handle left"></i><i class="handle right"></i><i class="stem"></i><i class="base"></i></div></div><span class="tag">2013 · ENGLAND</span><h3>ICC Champions Trophy</h3><p>India lifted the Champions Trophy under Dhoni's captaincy.</p></article>
- </div>
- <div class="notice" style="margin-top:14px">The trophy illustrations are original CSS artwork, not official trophy photographs.</div>
-</section>
-
-<section class="page" id="csk">
- <div class="section-head"><div><div class="kicker">Chapter four / Whistle podu</div><h2 class="heading">The yellow legacy.</h2><p class="sub">A tribute to Dhoni's long association with Chennai Super Kings and the bond with its fans.</p></div></div>
- <div class="hero" style="min-height:330px;background:radial-gradient(ellipse at 80% 50%,#e5c51b55,transparent 45%),linear-gradient(120deg,#24200a,#101116)"><div class="hero-copy"><div class="kicker">Chennai Super Kings</div><h2 class="heading" style="font-size:clamp(42px,8vw,82px)">YELLOW<br>IS AN EMOTION.</h2><p class="sub">Leadership, loyalty and the roar of the Chepauk crowd.</p><button class="primary" onclick="showPage('themes');applyTheme('csk')">ACTIVATE CSK THEME</button></div></div>
- <div class="grid3" style="margin-top:14px"><div class="card"><div class="big-num">5</div><h3>IPL titles</h3><p>CSK championship seasons under Dhoni's captaincy: 2010, 2011, 2018, 2021 and 2023.</p></div><div class="card"><div class="big-num">2008</div><h3>The beginning</h3><p>Dhoni became the face and long-time leader of the Chennai franchise.</p></div><div class="card"><div class="big-num">ONE</div><h3>Whistle Podu</h3><p>A team identity carried by a passionate fan community.</p></div></div>
-</section>
-
-<section class="page" id="odi">
- <div class="section-head"><div><div class="kicker">Chapter five / One day international</div><h2 class="heading">Blue. Bold. Unforgettable.</h2><p class="sub">Explore the ODI era and switch the entire interface into India-blue mode.</p></div></div>
- <div class="card"><span class="tag">THE 50-OVER LEGACY</span><h2 class="heading" style="color:#70adff">2011. THE NIGHT INDIA ROARED.</h2><p class="sub">An unbeaten 91 in the World Cup final, capped by a winning six. A defining chapter in the story of Indian cricket.</p><button class="primary" onclick="applyTheme('odi')">ACTIVATE ODI THEME</button></div>
-</section>
-
-<section class="page" id="t20">
- <div class="section-head"><div><div class="kicker">Chapter six / The shortest format</div><h2 class="heading">Fast format. Calm mind.</h2><p class="sub">A T20-inspired visual mode with electric teal highlights and energetic motion.</p></div></div>
- <div class="card"><span class="tag">THE FIRST WORLD CHAMPIONS</span><h2 class="heading" style="color:#4de0d0">2007. A NEW ERA.</h2><p class="sub">India won the inaugural ICC Men's T20 World Cup under Dhoni's captaincy.</p><button class="primary" onclick="applyTheme('t20')">ACTIVATE T20 THEME</button></div>
-</section>
-
-<section class="page" id="themes">
- <div class="section-head"><div><div class="kicker">Personalise the experience</div><h2 class="heading">Choose your era.</h2><p class="sub">Pick a theme. The accent colours, glow, particles, buttons and interface details update across every section. Your choice is saved on this device.</p></div></div>
- <div class="theme-grid">
-  <button class="theme-card" data-theme="csk" style="--swatch:#e5c51b;background:linear-gradient(140deg,#29230a,#11151c)"><span class="theme-icon">♛</span><b>CSK LEGACY</b><small>Championship Yellow · Royal Blue</small></button>
-  <button class="theme-card" data-theme="odi" style="--swatch:#3988e8;background:linear-gradient(140deg,#0b2446,#11151c)"><span class="theme-icon">◈</span><b>ODI LEGACY</b><small>India Blue · Silver</small></button>
-  <button class="theme-card" data-theme="t20" style="--swatch:#37d5c4;background:linear-gradient(140deg,#073c42,#11151c)"><span class="theme-icon">⚡</span><b>T20 STRIKE</b><small>Electric Teal · Deep Navy</small></button>
- </div>
- <div class="card" style="margin-top:14px"><div class="tag">LIVE THEME PREVIEW</div><h3 id="themeName">CSK LEGACY</h3><p>Switch themes at any time. The selection is stored locally in your browser.</p><div class="controls"><button class="primary" onclick="toast('Theme is already live across the experience')">PREVIEW ACTIVE THEME</button><button class="secondary" onclick="applyTheme('csk')">RESET TO CSK</button></div></div>
-</section>
-
-<section class="page" id="moments">
- <div class="section-head"><div><div class="kicker">Chapter seven / Forever moments</div><h2 class="heading">Moments that became memories.</h2><p class="sub">A curated text-led collection of iconic chapters. Add your own notes and favourites on this device.</p></div></div>
- <div class="grid2">
-  <article class="card"><span class="tag">2007 · T20 WORLD CUP FINAL</span><h3>The final over gamble</h3><p>India defeated Pakistan in a thrilling final to win the inaugural T20 World Cup.</p><button class="secondary" onclick="saveFavourite('2007 T20 World Cup Final')">♡ SAVE MOMENT</button></article>
-  <article class="card"><span class="tag">2011 · WORLD CUP FINAL</span><h3>The winning six</h3><p>Dhoni finished the final with an iconic six at Wankhede Stadium.</p><button class="secondary" onclick="saveFavourite('2011 World Cup Final')">♡ SAVE MOMENT</button></article>
-  <article class="card"><span class="tag">2013 · CHAMPIONS TROPHY</span><h3>Completing the set</h3><p>India lifted the Champions Trophy in England under Dhoni's leadership.</p><button class="secondary" onclick="saveFavourite('2013 Champions Trophy')">♡ SAVE MOMENT</button></article>
-  <article class="card"><span class="tag">THE SIGNATURE SHOT</span><h3>The helicopter shot</h3><p>A distinctive wrist-powered finish that became part of cricket folklore.</p><button class="secondary" onclick="saveFavourite('Helicopter Shot')">♡ SAVE MOMENT</button></article>
- </div>
-</section>
-
-<section class="page" id="vault">
- <div class="section-head"><div><div class="kicker">Chapter eight / Your collection</div><h2 class="heading">Personal media vault.</h2><p class="sub">Save your favourite moments and add personal notes. Your entries stay in this browser.</p></div></div>
- <div class="card"><label class="tag" for="noteTitle">ADD A PERSONAL MEMORY</label><input class="field" id="noteTitle" placeholder="Memory title" style="margin:10px 0"><textarea class="field" id="noteBody" rows="3" placeholder="Why is this moment special to you?"></textarea><button class="primary" style="margin-top:10px" onclick="addNote()">SAVE TO VAULT</button></div>
- <div id="vaultList" class="grid2" style="margin-top:14px"></div>
-</section>
-
-<section class="page" id="quiz">
- <div class="section-head"><div><div class="kicker">Chapter nine / Test your knowledge</div><h2 class="heading">The Legend Quiz.</h2><p class="sub">Five quick questions. See how well you know the career.</p></div></div>
- <div class="card" id="quizBox"><div class="tag" id="qCount">QUESTION 01 / 05</div><h3 id="question">Which year did India win the inaugural Men's T20 World Cup?</h3><div id="answers" class="grid2" style="margin-top:15px"></div><p id="quizFeedback" aria-live="polite"></p><button class="secondary" id="nextQuestion" style="display:none" onclick="nextQ()">NEXT QUESTION →</button></div>
-</section>
-
-<section class="page" id="studio">
- <div class="section-head"><div><div class="kicker">Independent creator space</div><h2 class="heading">Developer Studio.</h2><p class="sub">A dedicated space celebrating the person who designed and built this fan-made digital experience.</p></div></div>
- <div class="card profile">
-  <div class="sg-logo">SG</div>
-  <div><div class="kicker">Creator / Designer / Developer</div><h2 class="heading" style="font-size:clamp(34px,6vw,58px);margin:9px 0">SOHOM GIRI</h2><p class="sub">Building digital experiences with curiosity, creativity and a love for technology. This project is an independent fan tribute to MS Dhoni.</p><span class="pill">WEB DESIGN</span><span class="pill">FRONTEND</span><span class="pill">CREATIVE TECH</span><div class="hero-actions"><a class="primary" href="https://github.com/sohomgiri2" target="_blank" rel="noopener">GITHUB ↗</a><a class="secondary" href="https://instagram.com/itz_sg_063" target="_blank" rel="noopener">INSTAGRAM ↗</a></div></div>
- </div>
- <div class="section-head"><div><div class="kicker">The toolkit</div><h2 class="heading" style="font-size:32px">Built with curiosity.</h2></div></div>
- <div class="grid2">
-  <div class="card"><h3>HTML · CSS · JavaScript</h3><p>Structure, visual system and interactions.</p><div class="progress"><i style="--w:92%"></i></div></div>
-  <div class="card"><h3>CSS 3D & Motion</h3><p>Perspective, transforms and animated details.</p><div class="progress"><i style="--w:88%"></i></div></div>
-  <div class="card"><h3>Responsive Design</h3><p>Layouts that adapt to mobile and desktop.</p><div class="progress"><i style="--w:90%"></i></div></div>
-  <div class="card"><h3>Local-first Features</h3><p>Browser storage, export and restore tools.</p><div class="progress"><i style="--w:82%"></i></div></div>
- </div>
- <div class="notice" style="margin-top:14px"><b>Credits & disclaimer:</b> This is an unofficial fan-made tribute and is not affiliated with MS Dhoni, BCCI, ICC or Chennai Super Kings. Team names and event references belong to their respective owners. Developer credit: Sohom Giri.</div>
-</section>
-
-<section class="page" id="settings">
- <div class="section-head"><div><div class="kicker">Your experience / Controls</div><h2 class="heading">Settings & DataVault.</h2><p class="sub">Manage sound, motion and local data. Export a backup before clearing browser data.</p></div></div>
- <div class="grid2">
-  <div class="card"><h3>Sound effects</h3><p>Subtle UI sounds are generated locally. No audio starts without your action.</p><button class="secondary" onclick="toggleSound()">TOGGLE SOUND</button></div>
-  <div class="card"><h3>Motion mode</h3><p>Reduce particle movement and animation for a calmer experience.</p><button class="secondary" id="motionBtn" onclick="toggleMotion()">REDUCE MOTION</button></div>
-  <div class="card"><h3>Export backup</h3><p>Download saved notes, favourites and preferences as JSON.</p><button class="primary" onclick="exportData()">EXPORT JSON</button></div>
-  <div class="card"><h3>Restore backup</h3><p>Import a previously exported MSD DataVault JSON file.</p><input type="file" id="restoreFile" accept="application/json" class="field" style="margin:8px 0"><button class="secondary" onclick="importData()">RESTORE DATA</button></div>
-  <div class="card"><h3>Storage info</h3><p id="storageInfo">Checking local data…</p><button class="secondary" onclick="refreshStorage()">REFRESH</button></div>
-  <div class="card"><h3>Clear local data</h3><p>Remove saved notes and favourites from this browser. This cannot be undone.</p><button class="secondary" onclick="clearData()">CLEAR MY DATA</button></div>
- </div>
- <div class="notice" style="margin-top:14px">This single-file edition works without external libraries and can run locally. Browser storage is not guaranteed permanent: clearing site data or browser storage can erase saved content. For installable offline PWA support, a hosted version needs a separate service worker and web app manifest.</div>
-</section>
-
-<footer class="footer"><span>MSD — THE LEGEND · UNOFFICIAL FAN EXPERIENCE</span><span>DESIGNED & BUILT BY SOHOM GIRI</span></footer>
-</main></div>
-<nav class="mobile-nav" id="mobileNav"></nav>
-<div class="toast" id="toast"></div>
-<div class="modal" id="soundModal"><div class="modal-box"><div class="kicker">A little atmosphere</div><h3>Enable sound effects?</h3><p>Optional interface sounds add feedback to taps and navigation. Sound starts only after you choose to enable it.</p><div class="controls"><button class="primary" onclick="setSound(true);closeSoundModal()">ENABLE SOUND</button><button class="secondary" onclick="closeSoundModal()">NOT NOW</button><button class="secondary" onclick="localStorage.setItem('msdSoundAsked','1');closeSoundModal()">DON'T ASK AGAIN</button></div></div></div>
-<script>
-const pages=[['home','Home','⌂'],['career','Career Journey','◷'],['stats','Stats & Records','▤'],['trophies','Trophy Room','♜'],['csk','CSK Universe','♛'],['odi','ODI Legacy','◈'],['t20','T20 Legacy','⚡'],['themes','Theme Universe','◉'],['moments','Legendary Moments','✦'],['vault','Media Vault','▣'],['quiz','Quiz Arena','?'],['studio','Developer Studio','SG'],['settings','Settings & DataVault','⚙']];
-const themes={csk:{accent:'#e5c51b',accent2:'#3158a5',glow:'#e5c51b55',name:'CSK LEGACY'},odi:{accent:'#3988e8',accent2:'#a9c9f5',glow:'#3988e855',name:'ODI LEGACY'},t20:{accent:'#37d5c4',accent2:'#174f78',glow:'#37d5c455',name:'T20 STRIKE'}};
-let soundOn=false, audioCtx=null, currentPage='home', reduced=false;
-function buildNav(){for(const id of ['sideNav','mobileNav']){const el=document.getElementById(id);el.innerHTML='';pages.forEach((p,i)=>{const b=document.createElement('button');b.innerHTML=id==='sideNav'?`<span class="num">${String(i+1).padStart(2,'0')}</span>${p[1]}`:`<span>${p[2]}</span> ${p[1].split(' ')[0]}`;b.onclick=()=>showPage(p[0]);b.dataset.page=p[0];el.appendChild(b)})}}
-function showPage(id){if(!document.getElementById(id))return;currentPage=id;document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo({top:0,behavior:reduced?'auto':'smooth'});playTone(520,.035);if(id==='vault')renderVault();if(id==='settings')refreshStorage()}
-function applyTheme(id){const t=themes[id]||themes.csk;const r=document.documentElement;r.style.setProperty('--accent',t.accent);r.style.setProperty('--accent2',t.accent2);r.style.setProperty('--glow',t.glow);localStorage.setItem('msdTheme',id);document.getElementById('themeName').textContent=t.name;document.querySelectorAll('.theme-card').forEach(c=>c.classList.toggle('selected',c.dataset.theme===id));toast(t.name+' activated');playTone(680,.09)}
-function toast(s){const el=document.getElementById('toast');el.textContent=s;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.remove('show'),2100)}
-function toggleFullscreen(){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.().catch(()=>toast('Fullscreen not available'));else document.exitFullscreen?.()}
-function playTone(freq=440,duration=.05){if(!soundOn)return;try{audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(.035,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+duration);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+duration)}catch(e){}}
-function setSound(v){soundOn=v;localStorage.setItem('msdSound',v?'1':'0');document.getElementById('soundBtn').innerHTML=v?'♫ <span class="label">SOUND ON</span>':'♫ <span class="label">SOUND OFF</span>';if(v)playTone(620,.08)}
-function toggleSound(){setSound(!soundOn);toast(soundOn?'Sound enabled':'Sound muted')}
-function closeSoundModal(){document.getElementById('soundModal').classList.remove('show')}
-function toggleMotion(){reduced=!reduced;document.body.classList.toggle('reduced-motion',reduced);document.getElementById('motionBtn').textContent=reduced?'ENABLE MOTION':'REDUCE MOTION';localStorage.setItem('msdReduced',reduced?'1':'0');toast(reduced?'Reduced motion enabled':'Motion restored')}
-function getData(){return JSON.parse(localStorage.getItem('msdVault')||'{"notes":[],"favourites":[]}')}
-function putData(d){localStorage.setItem('msdVault',JSON.stringify(d));refreshStorage()}
-function saveFavourite(name){const d=getData();if(!d.favourites.includes(name))d.favourites.push(name);putData(d);toast('Saved to your favourites');playTone(740,.06)}
-function addNote(){const title=document.getElementById('noteTitle').value.trim(),body=document.getElementById('noteBody').value.trim();if(!title){toast('Add a title first');return}const d=getData();d.notes.unshift({title,body,date:new Date().toLocaleDateString()});putData(d);document.getElementById('noteTitle').value='';document.getElementById('noteBody').value='';renderVault();toast('Memory saved locally')}
-function renderVault(){const d=getData(),el=document.getElementById('vaultList');el.innerHTML='';const items=[...d.favourites.map(x=>({title:x,body:'Favourite moment',date:'FAVOURITE'})),...d.notes];if(!items.length){el.innerHTML='<div class="card"><h3>Your vault is waiting.</h3><p>Save a legendary moment or write a personal memory to see it here.</p></div>';return}items.forEach((n,i)=>{const c=document.createElement('article');c.className='card';c.innerHTML=`<span class="tag">${escapeHTML(n.date||'MEMORY')}</span><h3>${escapeHTML(n.title)}</h3><p>${escapeHTML(n.body||'Saved favourite')}</p><button class="secondary" onclick="deleteVaultItem(${i},${JSON.stringify(n.title)})">REMOVE</button>`;el.appendChild(c)})}
-function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function deleteVaultItem(index,title){const d=getData();if(d.favourites.includes(title))d.favourites=d.favourites.filter(x=>x!==title);else{const noteIndex=index-d.favourites.length;if(noteIndex>=0)d.notes.splice(noteIndex,1)}putData(d);renderVault();toast('Removed from vault')}
-function exportData(){const payload={version:1,exportedAt:new Date().toISOString(),theme:localStorage.getItem('msdTheme')||'csk',sound:localStorage.getItem('msdSound')||'0',vault:getData()};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='MSD-DataVault-backup.json';a.click();URL.revokeObjectURL(url);toast('Backup exported')}
-function importData(){const f=document.getElementById('restoreFile').files[0];if(!f){toast('Choose a JSON backup first');return}const reader=new FileReader();reader.onload=()=>{try{const x=JSON.parse(reader.result);if(!x.vault||!Array.isArray(x.vault.notes)||!Array.isArray(x.vault.favourites))throw Error();putData(x.vault);if(themes[x.theme])applyTheme(x.theme);setSound(x.sound==='1');renderVault();toast('Backup restored')}catch(e){toast('This backup file is not valid')}};reader.readAsText(f)}
-function clearData(){if(!confirm('Delete all saved notes and favourites from this browser?'))return;localStorage.removeItem('msdVault');renderVault();refreshStorage();toast('Local data cleared')}
-function refreshStorage(){const d=localStorage.getItem('msdVault')||'';document.getElementById('storageInfo').textContent=`Approx. ${(new Blob([d]).size/1024).toFixed(2)} KB used by your saved notes and favourites. Browser storage can be cleared by device settings.`}
-const questions=[['Which year did India win the inaugural Men’s T20 World Cup?',['2005','2007','2009','2011'],1],['Where was the 2011 World Cup final played?',['Eden Gardens','Wankhede Stadium','Lords','Chepauk'],1],['Which shot became closely associated with Dhoni?',['Reverse sweep','Helicopter shot','Ramp shot','Switch hit'],1],['Which trophy did India win in 2013?',['Asia Cup','Champions Trophy','World Test Championship','T20 World Cup'],1],['Which city is home to Chennai Super Kings?',['Mumbai','Chennai','Jaipur','Delhi'],1]];
-let qi=0,score=0,answered=false;
-function loadQ(){const q=questions[qi];document.getElementById('qCount').textContent=`QUESTION ${String(qi+1).padStart(2,'0')} / 05`;document.getElementById('question').textContent=q[0];document.getElementById('quizFeedback').textContent='';document.getElementById('nextQuestion').style.display='none';document.getElementById('answers').innerHTML='';answered=false;q[1].forEach((a,i)=>{const b=document.createElement('button');b.className='secondary';b.textContent=a;b.onclick=()=>answer(i);document.getElementById('answers').appendChild(b)})}
-function answer(i){if(answered)return;answered=true;const q=questions[qi];if(i===q[2]){score++;document.getElementById('quizFeedback').textContent='✓ Correct. Great knowledge!'}else document.getElementById('quizFeedback').textContent='Not quite — the correct answer is '+q[1][q[2]]+'.';[...document.getElementById('answers').children].forEach((b,j)=>{b.disabled=true;if(j===q[2])b.style.borderColor='var(--accent)'});document.getElementById('nextQuestion').style.display='inline-block';document.getElementById('nextQuestion').textContent=qi===4?'SEE MY SCORE':'NEXT QUESTION →'}
-function nextQ(){if(qi<4){qi++;loadQ()}else{document.getElementById('quizBox').innerHTML=`<div class="kicker">Quiz complete</div><div class="big-num">${score}/5</div><h2>${score>=4?'You know the legend!':'Keep exploring the legend.'}</h2><p class="sub">Your score: ${score} out of 5.</p><button class="primary" onclick="qi=0;score=0;loadQ()">PLAY AGAIN</button>`}}
-function initParticles(){const c=document.getElementById('particles'),ctx=c.getContext('2d');let w,h,pts=[];function resize(){w=c.width=innerWidth*devicePixelRatio;h=c.height=innerHeight*devicePixelRatio;c.style.width=innerWidth+'px';c.style.height=innerHeight+'px';pts=Array.from({length:Math.min(65,Math.floor(innerWidth/16))},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.7+.3,v:Math.random()*.25+.08,a:Math.random()*.5+.1}))}function draw(){ctx.clearRect(0,0,w,h);const accent=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();pts.forEach(p=>{p.y-=p.v*devicePixelRatio;if(p.y<0){p.y=h;p.x=Math.random()*w}ctx.beginPath();ctx.arc(p.x,p.y,p.r*devicePixelRatio,0,Math.PI*2);ctx.fillStyle=accent;ctx.globalAlpha=p.a;ctx.fill()});ctx.globalAlpha=1;if(!reduced)requestAnimationFrame(draw)}addEventListener('resize',resize);resize();draw()}
-document.querySelectorAll('.theme-card').forEach(b=>b.addEventListener('click',()=>applyTheme(b.dataset.theme)));
-document.getElementById('soundBtn').onclick=toggleSound;
-buildNav();applyTheme(localStorage.getItem('msdTheme')||'csk');setSound(localStorage.getItem('msdSound')==='1');reduced=localStorage.getItem('msdReduced')==='1';document.getElementById('motionBtn').textContent=reduced?'ENABLE MOTION':'REDUCE MOTION';loadQ();initParticles();renderVault();
-if(!localStorage.getItem('msdSoundAsked'))setTimeout(()=>document.getElementById('soundModal').classList.add('show'),1400);
-</script>
-</body></html>
+<html lang="en" data-theme="csk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>MSD — THE LEGEND · Beyond Cricket. Beyond Time.</title>
+    <meta name="description" content="MSD — THE LEGEND. An unofficial, fan-made cinematic 3D tribute to MS Dhoni: career timeline, stats, trophy room, CSK, ODI and T20 legacy, quiz arena and more. Built by Sohom Giri." />
+    <meta name="author" content="Sohom Giri" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="color-scheme" content="dark" />
+    <meta property="og:title" content="MSD — THE LEGEND" />
+    <meta property="og:description" content="Beyond Cricket. Beyond Time. An unofficial fan-made tribute." />
+    <meta property="og:type" content="website" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" type="image/png" href="./icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,body{background:#0a0a0a;margin:0}
+      #boot{position:fixed;inset:0;display:grid;place-items:center;color:#FFD400;font:500 12px/1 ui-monospace,monospace;letter-spacing:.3em;background:#0a0a0a}
+    </style>
+  </head>
+  <body>
+    <div id="root"><div id="boot">LOADING MSD…</div></div>
+    <noscript>MSD — THE LEGEND needs JavaScript to run.</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
